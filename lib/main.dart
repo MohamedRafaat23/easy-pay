@@ -1,5 +1,5 @@
 import 'package:easy_bay/core/utils/app_routes.dart';
-import 'package:easy_bay/features/ui/splash/splash.dart';
+import 'package:easy_bay/features/view/splash/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

@@ -1,6 +1,7 @@
-import 'package:easy_bay/features/ui/auth/login/login_screen.dart';
-import 'package:easy_bay/features/ui/auth/register/register_screen.dart';
-import 'package:easy_bay/features/ui/splash/splash.dart';
+import 'package:easy_bay/features/view/auth/forget_password/forget_password_screen.dart';
+import 'package:easy_bay/features/view/auth/login/login_screen.dart';
+import 'package:easy_bay/features/view/auth/register/register_screen.dart';
+import 'package:easy_bay/features/view/splash/splash.dart';
 import 'package:flutter/material.dart';
 
 class AppRoutes {
@@ -21,7 +22,8 @@ class AppRoutes {
         return MaterialPageRoute(
           builder: (_) => const RegisterScreen(),
         );
-      
+      case ForgetPasswordScreen.routeName:
+      return MaterialPageRoute(builder: (_)=>const ForgetPasswordScreen());
       default:
         return MaterialPageRoute(
           builder: (_) => const Scaffold(

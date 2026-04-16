@@ -1,5 +1,6 @@
 import 'package:easy_bay/core/utils/app_colors.dart';
 import 'package:easy_bay/core/utils/validator.dart';
+import 'package:easy_bay/features/view/widgets/custom_form_field.dart';
 import 'package:flutter/material.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -62,7 +63,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
 
                 SizedBox(height: height * 0.03),
-
                 const Text(
                   "Create Account! 🎉",
                   style: TextStyle(
@@ -84,14 +84,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   style: TextStyle(fontSize: 15, color: AppColors.lightgrey),
                 ),
                 const SizedBox(height: 4),
-                TextFormField(
+                //Name
+                CustomFormField(
                   controller: nameController,
+                  hintText: "Enter Your Name",
+                  validator: AppValidator.validateName,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  validator: (v) => v!.isEmpty ? "Name is required" : null,
-                  decoration: _decoration(
-                    "Enter your name",
-                    Icons.person_outline,
-                  ),
+                  prefixIcon: const Icon(Icons.person_outline),
+                  keyboardType: TextInputType.text,
                 ),
                 SizedBox(height: height * 0.01),
                 const Text(
@@ -99,46 +99,42 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   style: TextStyle(fontSize: 15, color: AppColors.lightgrey),
                 ),
                 const SizedBox(height: 4),
-                TextFormField(
+                //Email
+                CustomFormField(
                   controller: emailController,
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  keyboardType: TextInputType.emailAddress,
+                  hintText: "Enter your email",
                   validator: AppValidator.validateEmail,
-                  decoration: _decoration(
-                    "Enter your email",
-                    Icons.email_outlined,
-                  ),
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  prefixIcon: const Icon(Icons.email_outlined),
+                  keyboardType: TextInputType.emailAddress,
                 ),
-
                 SizedBox(height: height * 0.01),
-
                 const Text(
                   "Password",
                   style: TextStyle(fontSize: 15, color: AppColors.lightgrey),
                 ),
                 const SizedBox(height: 4),
-                TextFormField(
+                CustomFormField(
                   controller: passwordController,
+                  hintText: "Enter your password",
+                  validator: AppValidator.validatePassword,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   obscureText: !passwordVisible,
-                  validator: AppValidator.validatePassword,
-                  decoration: _decoration(
-                    "Enter your password",
-                    Icons.lock_outline,
-                    suffix: IconButton(
-                      onPressed: () =>
-                          setState(() => passwordVisible = !passwordVisible),
-                      icon: Icon(
-                        passwordVisible
-                            ? Icons.visibility_outlined
-                            : Icons.visibility_off_outlined,
-                      ),
+                  prefixIcon: const Icon(Icons.lock_outline),
+                  suffixIcon: IconButton(
+                    onPressed: () {
+                      setState(() {
+                        passwordVisible = !passwordVisible;
+                      });
+                    },
+                    icon: Icon(
+                      passwordVisible
+                          ? Icons.visibility_outlined
+                          : Icons.visibility_off_outlined,
                     ),
                   ),
                 ),
-
                 SizedBox(height: height * 0.03),
-
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
